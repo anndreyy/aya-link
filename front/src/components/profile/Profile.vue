@@ -1,10 +1,11 @@
 <script>
 import ProfileLinks from "./ProfileLinks.vue";
+import ProfilePhoto from "./ProfilePhoto.vue";
 export default {
     name: "Profile",
     props: [],
     data: () => ({}),
-    components: { ProfileLinks },
+    components: { ProfileLinks, ProfilePhoto },
     methods: {},
     created() { },
     mounted() { },
@@ -17,7 +18,7 @@ export default {
         <div id="profileCover">            
         </div>
 
-        <img alt="Veronica" src="@/assets/profile-pic.png" id="profilePhoto">
+        <ProfilePhoto />
 
         <div class="profileName">
             <h1>
