@@ -1,5 +1,7 @@
 // imports
+const mongoose = require('mongoose');
 const UserModel = require('../models/user');
+
 
 module.exports = async (username) => {
 
@@ -11,6 +13,8 @@ module.exports = async (username) => {
     if (!user) {
         throw new Error(`Usuário não encontrado com o username: ${username}`);
     }
+
+    mongoose.disconnect();
 
     // Retorna os dados do usuário
     return user;
