@@ -34,8 +34,8 @@ exports.setUser = async (req, res) => {
             data: User,
         });
     } catch (error) {
-        return res.status(404).send({
-            data: User,
+        return res.status(400).send({
+            data: error.message,
         });
 
     }

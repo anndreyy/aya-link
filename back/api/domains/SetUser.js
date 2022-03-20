@@ -10,19 +10,22 @@ const UserModel = require('../models/user');
 module.exports = async (user) => {
 
     // Valida se o usuário existe
-    const userExists = await UserModel.User.findOne({
-        username: user.username
-    });
+    // verifica se o usuário ou e-mail existe
+    const userExists = await UserModel.User.findOne(
+        {
+            $or: [
+                { username: user.username },
+                { email: user.email }
+            ]
+        }
+    );
 
     if (userExists) {
-        throw new Error(`Usuário já existe com o username: ${user.username}`);
+        throw new Error(`Usuário ou e-mail já cadastrado`);
     }
 
     // Cria o usuário
-    const newUser = new UserModel.User(user);
-
-    // Salva o usuário
-    const userSaved = await newUser.save();
+    const userSaved = await UserModel.Create(user);
 
     // Retorna os dados do usuário
     return userSaved;
