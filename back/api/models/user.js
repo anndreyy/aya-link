@@ -45,10 +45,6 @@ const Create = async (user) => {
 const Update = async (userExist, user) => {
     userExist.updatedAt = new Date();
 
-    if (user.username) {
-        throw new Error(`Não é possível alterar o username`);
-    }
-
     userExist.name = user.name || userExist.name;
     userExist.email = user.email || userExist.email;
     userExist.password = await bcrypt.hash(user.password, 10) || userExist.password;
@@ -65,4 +61,7 @@ const Update = async (userExist, user) => {
 exports.User = User;
 exports.Create = Create;
 exports.Update = Update;
+exports.Disconect = () => {
+    mongoose.disconnect();
+}
 

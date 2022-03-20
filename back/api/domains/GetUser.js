@@ -14,7 +14,7 @@ module.exports = async (username) => {
         throw new Error(`Usuário não encontrado com o username: ${username}`);
     }
 
-    mongoose.disconnect();
+    // mongoose.disconnect();
 
     // Retorna os dados do usuário
     return user;
