@@ -12,7 +12,10 @@ router.use(function timeLog(req, res, next) {
 router.get('/', function (req, res) {
     res.send('Fly');
 });
+
 // Rotas para retornar os dados do usuário
 router.get('/user/:username', controllerUser.getUser);
+
+router.post('/user', controllerUser.setUser);
 
 module.exports = router;
