@@ -17,6 +17,11 @@ app._router.stack.forEach(function(middleware){
     }
 });
 
-console.log(routes)
+// Show routes
+routes.map( route => {
+    for (const method in route.methods) {
+        console.log(method, route.path);
+    }
+})
 
 module.exports = app;
