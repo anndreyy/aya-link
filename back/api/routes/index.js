@@ -18,4 +18,6 @@ router.get('/user/:username', controllerUser.getUser);
 
 router.post('/user', controllerUser.setUser);
 
+router.put('/user/:username', controllerUser.updateUser);
+
 module.exports = router;

@@ -1,5 +1,4 @@
 // imports 
-const mongoose = require('mongoose');
 const UserModel = require('../models/user');
 
 /**

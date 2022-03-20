@@ -40,3 +40,21 @@ exports.setUser = async (req, res) => {
 
     }
 }
+
+exports.updateUser = async (req, res) => {
+    const UpdateUser = require('../domains/UpdateUser');
+
+    try {
+        var User = await UpdateUser(req.body, req.params.username);
+
+        // Retorna os dados do usuário
+        return res.status(200).send({
+            data: User,
+        });
+    } catch (error) {
+        return res.status(400).send({
+            data: error.message,
+        });
+
+    }
+}

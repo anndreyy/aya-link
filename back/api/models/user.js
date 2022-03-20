@@ -42,7 +42,27 @@ const Create = async (user) => {
     return await newUser.save();
 }
 
+const Update = async (userExist, user) => {
+    userExist.updatedAt = new Date();
+
+    if (user.username) {
+        throw new Error(`Não é possível alterar o username`);
+    }
+
+    userExist.name = user.name || userExist.name;
+    userExist.email = user.email || userExist.email;
+    userExist.password = await bcrypt.hash(user.password, 10) || userExist.password;
+    userExist.status = user.status || userExist.status;
+    userExist.role = user.role || userExist.role;
+    userExist.token = user.token || userExist.token;
+    userExist.tokenExpires = user.tokenExpires || userExist.tokenExpires;
+    userExist.links = user.links || userExist.links;
+
+    return await userExist.save();
+}
+
 
 exports.User = User;
 exports.Create = Create;
+exports.Update = Update;
 
